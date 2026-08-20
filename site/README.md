@@ -2,6 +2,8 @@
 
 Static Next.js website and documentation for Zari.
 
+Production: [get-zari.vercel.app](https://get-zari.vercel.app)
+
 ```sh
 npm install
 npm run dev
@@ -14,4 +16,4 @@ npm run lint
 npm run build
 ```
 
-The build uses `output: "export"`, so Vercel can deploy it without server functions. Set the Vercel Root Directory to `site`. Before publishing, replace the placeholder GitHub URLs and `metadataBase` domain with the real repository and production domain.
+The build uses `output: "export"`, so Vercel can deploy it without server functions. Set the Vercel Root Directory to `site`.

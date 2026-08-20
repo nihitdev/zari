@@ -9,8 +9,9 @@ const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: { default: "Zari — terminal file manager", template: "%s · Zari" },
   description: "A fast, keyboard-driven terminal file manager for Linux, built in modern C++.",
-  metadataBase: new URL("https://zari.vercel.app"),
-  openGraph: { title: "Zari", description: "Move at the speed of thought.", type: "website" },
+  metadataBase: new URL("https://get-zari.vercel.app"),
+  alternates: { canonical: "/" },
+  openGraph: { title: "Zari", description: "Move at the speed of thought.", type: "website", url: "https://get-zari.vercel.app" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

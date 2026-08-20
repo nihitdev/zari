@@ -2,6 +2,11 @@
 
 **A fast, keyboard-driven terminal file manager for Linux, written in C++20.**
 
+<p align="center">
+  <a href="https://get-zari.vercel.app">Website</a> ·
+  <a href="https://get-zari.vercel.app/docs/">Documentation</a>
+</p>
+
 > Zari is inspired by modern terminal file managers but is an independent C++ implementation.
 
 <div align="center">

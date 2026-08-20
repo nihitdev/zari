@@ -1,0 +1,6 @@
+# Colors based on the Dracula palette (MIT).
+[manager]
+directory = { fg = "#8be9fd", bold = true }
+file = { fg = "#f8f8f2" }
+executable = { fg = "#50fa7b" }
+selected = { fg = "#282a36", bg = "#bd93f9", bold = true }

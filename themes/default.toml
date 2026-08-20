@@ -1,0 +1,9 @@
+# Zari default theme
+[manager]
+directory = { fg = "blue", bold = true }
+file = { fg = "white" }
+executable = { fg = "green" }
+symlink = { fg = "cyan" }
+selected = { fg = "black", bg = "blue", bold = true }
+[border]
+border = { fg = "cyan" }

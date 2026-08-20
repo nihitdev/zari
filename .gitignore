@@ -1,0 +1,12 @@
+/build/
+*.o
+*.a
+*.so
+*.log
+.cache/
+.DS_Store
+
+# IDE and local environment
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,3 @@
+#include "zari/app.hpp"
+#include <iostream>
+int main(int argc,char**argv){std::string error;auto cli=zari::parse_cli(argc,argv,error);if(!cli){std::cerr<<"zari: "<<error<<"\nTry 'zari --help'.\n";return 2;}if(cli->help){std::cout<<"Zari "<<ZARI_VERSION<<" — keyboard-driven terminal file manager\n\nUsage: zari [OPTIONS] [PATH]\n  -h, --help          Show this help\n  -V, --version       Show version\n      --config PATH   Use a specific zari.toml\n      --theme NAME    Select a built-in theme\n      --debug         Enable diagnostic logging\n";return 0;}if(cli->version){std::cout<<"zari "<<ZARI_VERSION<<'\n';return 0;}try{return zari::App(*cli).run();}catch(const std::exception&e){std::cerr<<"zari: "<<e.what()<<'\n';return 1;}}

@@ -1,0 +1,6 @@
+# Colors based on the Gruvbox palette (MIT).
+[manager]
+directory = { fg = "#83a598", bold = true }
+file = { fg = "#ebdbb2" }
+executable = { fg = "#b8bb26" }
+selected = { fg = "#282828", bg = "#d79921", bold = true }

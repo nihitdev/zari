@@ -1,0 +1,6 @@
+# Colors based on the Tokyo Night palette (MIT).
+[manager]
+directory = { fg = "#7aa2f7", bold = true }
+file = { fg = "#c0caf5" }
+executable = { fg = "#9ece6a" }
+selected = { fg = "#1a1b26", bg = "#bb9af7", bold = true }

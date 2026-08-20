@@ -1,0 +1,6 @@
+# Colors based on the Nord palette (MIT).
+[manager]
+directory = { fg = "#81a1c1", bold = true }
+file = { fg = "#d8dee9" }
+executable = { fg = "#a3be8c" }
+selected = { fg = "#2e3440", bg = "#88c0d0", bold = true }

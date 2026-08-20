@@ -1,0 +1,10 @@
+# Palette derived from the Catppuccin Mocha community palette (MIT).
+[manager]
+directory = { fg = "#89b4fa", bold = true }
+file = { fg = "#cdd6f4" }
+executable = { fg = "#a6e3a1" }
+symlink = { fg = "#94e2d5" }
+selected = { fg = "#11111b", bg = "#cba6f7", bold = true }
+[tabs]
+active = { fg = "#11111b", bg = "#89b4fa", bold = true }
+inactive = { fg = "#a6adc8" }

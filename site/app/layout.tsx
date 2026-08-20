@@ -21,6 +21,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <nav aria-label="Main navigation"><Link href="/#features">Features</Link><Link href="/docs/">Docs</Link><a href="https://github.com/nihitdev/zari" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </header>
     {children}
-    <footer className="footer shell"><div className="brand"><span className="mark small">Z</span><span>zari</span></div><p>Independent. Native. No plugins.</p><p>MIT licensed · built with C++20</p></footer>
+    <footer className="footer shell"><div className="brand"><span className="mark small">Z</span><span>zari</span></div><p>Independent. Native. No plugins.</p><p>GPL-3.0-or-later · built with C++20</p></footer>
   </body></html>;
 }

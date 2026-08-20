@@ -103,3 +103,7 @@ Search-result views, `rg` integration, cancellable progress dialogs for large op
 ## Documentation and website
 
 The repository wiki lives in [`docs/wiki`](docs/wiki/README.md). A deploy-ready static Next.js website, including browsable documentation, lives in [`site`](site/README.md).
+
+## License
+
+Zari is free software licensed under the [GNU General Public License, version 3 or later](LICENSE). See [COPYRIGHT](COPYRIGHT) for the project notice.

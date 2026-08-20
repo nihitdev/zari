@@ -23,18 +23,31 @@
 
 <p align="center"><sub>Illustrated preview — exact colors and glyphs depend on your terminal and active theme.</sub></p>
 
-Zari focuses on predictable filesystem behavior, a clean three-pane interface, and useful defaults that can be overridden without copying a complete configuration. It has no plugin or scripting system.
+Zari focuses on predictable filesystem behavior, a clean three-pane interface, and useful defaults that can be overridden without copying a complete configuration. It has no plugin or scripting system; functionality is implemented natively in the C++ codebase.
+
+## Project status
+
+Zari is under active development. Version `0.1.x` is usable, but interfaces and configuration details may evolve before `1.0`. Filesystem operations should always be tested on non-critical data when evaluating a new release.
+
+Current targets:
+
+- Linux on `x86_64` and `aarch64`
+- C++20 with GCC or Clang
+- UTF-8 terminals supported by `ncursesw`
+- Arch Linux and Debian/Ubuntu packaging
 
 ## Features
 
-- Wide-character ncurses UI with parent, current, and preview panes
-- Vim-style navigation, scrolling, history, tabs, selection, and multi-key chords
-- Natural/alphabetical/extension/size/time/random sorting
-- Text, directory, binary, symlink, and metadata previews
-- Copy, cut, collision-safe paste, rename, create, trash, and permanent delete
-- Incremental fuzzy find and native recursive filename search
-- Layered TOML configuration, keymap, built-in themes, and runtime reload
-- XDG-aware config/state paths and safe terminal restoration through RAII
+| Area | Implemented capabilities |
+| --- | --- |
+| Interface | Wide-character ncurses UI, configurable three-pane layout, resize handling, tabs, status bar, and help overlay |
+| Navigation | Vim-style movement, directory history, page scrolling, cursor restoration, bookmarks, and multi-key chords |
+| Files | Metadata, hidden-file toggle, multi-selection, copy, cut, collision-safe paste, rename, create, trash, and permanent delete |
+| Listing | Natural, alphabetical, extension, size, time, random, and unsorted modes; reverse and directories-first controls |
+| Preview | Text, directory, binary, symlink, and general metadata previews with size limits and tab expansion |
+| Search | Incremental fuzzy find and native recursive filename search |
+| Customization | Layered TOML configuration, remappable keybindings, six built-in themes, custom theme overrides, and runtime reload |
+| Runtime | XDG-aware paths, background task primitives, diagnostic logging, and RAII-based terminal restoration |
 
 ## Installation
 
@@ -142,11 +155,33 @@ Press `?` at any time to open the interactive help overlay. Press `q` to quit.
 
 ## Keyboard shortcuts
 
-`j/k` move, `h/l` leave/enter, `gg/G` top/bottom, `Space` select, `y/x/p` copy/cut/paste, `d/D` trash/delete, `r` rename, `a/A` create file/directory, `.` hidden files, `/` incremental find, `f` recursive filename search, `tt` new tab, `[`/`]` switch tabs, `Ctrl-w` close tab, `?` help, `R` reload, and `q` quit. The help overlay reflects active bindings.
+| Keys | Action |
+| --- | --- |
+| `j` / `k`, arrows | Move cursor |
+| `h` / `l` | Parent directory / enter directory or open file |
+| `gg` / `G` | Jump to top / bottom |
+| `Space`, `v` | Toggle selection / visual selection mode |
+| `y` / `x` / `p` | Copy / cut / paste |
+| `d` / `D` | Move to trash / permanently delete |
+| `r`, `a`, `A` | Rename / create file / create directory |
+| `.` | Toggle hidden files |
+| `/`, `f` | Incremental find / recursive filename search |
+| `tt`, `[` / `]`, `Ctrl-w` | Create, switch, or close tabs |
+| `R` | Reload configuration, keymap, and theme |
+| `?`, `q` | Open help / quit |
+
+These are defaults. The in-application help overlay is generated from the active keymap and reflects user overrides.
 
 ## Configuration
 
 Files are read from `$ZARI_CONFIG_HOME`, then `$XDG_CONFIG_HOME/zari`, then `~/.config/zari`. Missing files are fine.
+
+```text
+~/.config/zari/
+├── zari.toml      # manager, preview, UI, confirmation, and theme settings
+├── keymap.toml    # key sequences and actions
+└── theme.toml     # style overrides
+```
 
 ```toml
 [manager]
@@ -184,13 +219,61 @@ Built-ins: `default`, `catppuccin-mocha`, `gruvbox-dark`, `dracula`, `nord`, and
 
 Incremental and recursive filename searches are native. Content-search UI integration with `rg` and richer search-result navigation are roadmap work; Zari never executes files for previewing.
 
+## Filesystem safety
+
+- File operations use `std::filesystem` and direct process APIs instead of interpolating filenames into shell commands.
+- Paste operations detect collisions and do not silently overwrite existing paths.
+- Trash operations use the freedesktop trash layout where practical; permanent deletion is a separate action.
+- Symlinks are represented explicitly and are not followed unexpectedly during destructive traversal.
+- Terminal ownership is RAII-based so normal exits and handled failures restore terminal state.
+
+Please report any filesystem-safety issue privately before publishing reproduction details. Do not test destructive operations against irreplaceable data.
+
 ## Architecture
 
 `App` owns the event loop, `Ui` owns rendering, `Manager` coordinates independent `Tab` state, and focused modules handle configuration, themes, keymaps, filesystem operations, previews, search, and background tasks. Ownership is RAII-based and filesystem calls avoid shell interpolation.
 
+```text
+include/zari/   Public module interfaces
+src/            Application and module implementations
+tests/          Non-TUI test harness
+themes/         Installed built-in theme presets
+packaging/      Debian and Arch package metadata
+docs/wiki/      Repository documentation
+site/           Next.js documentation website
+```
+
+## Development
+
+Configure a warning-enabled debug build and run the tests:
+
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON
+cmake --build build
+ctest --test-dir build --output-on-failure
+```
+
+The project compiles with `-Wall -Wextra -Wpedantic`. Keep UI-independent behavior in testable modules and add regression coverage for configuration, sorting, path handling, selection, tabs, search, and filesystem operations.
+
+## Contributing
+
+Issues and focused pull requests are welcome. Before submitting a change:
+
+1. Keep the implementation native C++20; Zari intentionally does not support plugins or embedded scripting runtimes.
+2. Preserve safe behavior for spaces, Unicode names, leading dashes, symlinks, and recursive operations.
+3. Build with the warning flags enabled and run the complete test suite.
+4. Update the README or wiki when behavior, keybindings, configuration, or packaging changes.
+
+For substantial changes, open an issue first so the design and scope can be discussed before implementation.
+
 ## Roadmap
 
-Search-result views, `rg` integration, cancellable progress dialogs for large operations, bulk rename, open-with rules UI, image protocols, syntax highlighting, and more metadata columns.
+- Search-result views and `rg` content-search integration
+- Cancellable progress dialogs for long-running operations
+- Bulk rename and an open-with rules interface
+- Optional terminal image-protocol support
+- Syntax-highlighted source previews
+- Additional metadata columns and UI polish
 
 ## Troubleshooting
 

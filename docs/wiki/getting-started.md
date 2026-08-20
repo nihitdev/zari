@@ -15,7 +15,7 @@ curl -fsSL https://raw.githubusercontent.com/nihitdev/zari/main/install.sh | sh
 
 The installer verifies the release checksum and installs into `~/.local` without `sudo`. Set `ZARI_INSTALL_ROOT` to choose another prefix or `ZARI_VERSION` to pin a release.
 
-Debian and Ubuntu users can download a `.deb` from GitHub Releases and run `sudo apt install ./zari_0.1.0_amd64.deb`. The AUR package can be installed with `yay -S zari` after its first publication.
+Debian and Ubuntu users can download a `.deb` from GitHub Releases and run `sudo apt install ./zari_0.1.0_amd64.deb`. Arch Linux users can install the [AUR package](https://aur.archlinux.org/packages/zari) with `yay -S zari`.
 
 ## Build from source
 

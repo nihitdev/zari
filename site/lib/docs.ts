@@ -6,7 +6,7 @@ export const docs: Doc[] = [
     {title:"Requirements",bullets:["Linux with a UTF-8 locale","CMake 3.20 or newer","A C++20 compiler such as GCC or Clang","ncursesw development headers"]},
     {title:"Install a release",paragraphs:["The installer downloads the correct Linux archive, verifies its SHA-256 checksum, and installs into ~/.local without sudo."],code:"curl -fsSL https://raw.githubusercontent.com/nihitdev/zari/main/install.sh | sh"},
     {title:"Debian and Ubuntu",paragraphs:["Download the package for your architecture from GitHub Releases, then let APT install its runtime dependencies."],code:"sudo apt install ./zari_0.1.0_amd64.deb"},
-    {title:"Arch Linux",paragraphs:["Once the submitted AUR package is available, install it with your preferred AUR helper."],code:"yay -S zari"},
+    {title:"Arch Linux",paragraphs:["Zari is published in the Arch User Repository. Install it with your preferred AUR helper."],code:"yay -S zari"},
     {title:"Build from source",code:"git clone https://github.com/nihitdev/zari.git\ncd zari\ncmake -S . -B build -DCMAKE_BUILD_TYPE=Release\ncmake --build build\nctest --test-dir build --output-on-failure\n./build/zari"},
     {title:"Open a location",paragraphs:["Run Zari without an argument to open the current working directory, or pass a path directly."],code:"zari\nzari .\nzari ~/Projects\nzari /mnt/storage"},
     {title:"First five keys",bullets:["j / k — move down and up","h / l — leave or enter a directory","Space — select an item","? — show the live keybinding reference","q — quit and restore the terminal"]}

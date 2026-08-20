@@ -50,7 +50,13 @@ sudo apt install ./zari_0.1.0_amd64.deb
 
 ### Arch Linux / AUR
 
-The AUR-ready manifest is maintained in [`packaging/aur`](packaging/aur/PKGBUILD). After publication, install with your preferred AUR helper, for example `yay -S zari`.
+Zari is available from the [Arch User Repository](https://aur.archlinux.org/packages/zari). Install it with your preferred AUR helper:
+
+```sh
+yay -S zari
+```
+
+The maintained package manifest also lives in [`packaging/aur`](packaging/aur/PKGBUILD).
 
 ### Build from source
 

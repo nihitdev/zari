@@ -28,7 +28,31 @@ Zari focuses on predictable filesystem behavior, a clean three-pane interface, a
 - Layered TOML configuration, keymap, built-in themes, and runtime reload
 - XDG-aware config/state paths and safe terminal restoration through RAII
 
-## Requirements and installation
+## Installation
+
+### Installer
+
+Release binaries install into `~/.local` by default and are verified against the release checksum:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/nihitdev/zari/main/install.sh | sh
+```
+
+Use `ZARI_INSTALL_ROOT=/custom/prefix` to choose another prefix, or `ZARI_VERSION=0.1.0` to pin a release. The installer never uses `sudo`.
+
+### Debian and Ubuntu
+
+Download the `.deb` for your architecture from [GitHub Releases](https://github.com/nihitdev/zari/releases), then install it with APT so dependencies are resolved:
+
+```sh
+sudo apt install ./zari_0.1.0_amd64.deb
+```
+
+### Arch Linux / AUR
+
+The AUR-ready manifest is maintained in [`packaging/aur`](packaging/aur/PKGBUILD). After publication, install with your preferred AUR helper, for example `yay -S zari`.
+
+### Build from source
 
 Linux, CMake 3.20+, a C++20 compiler, and ncursesw development headers are required. On Debian/Ubuntu: `sudo apt install cmake g++ libncursesw5-dev`.
 

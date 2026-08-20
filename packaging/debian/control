@@ -1,0 +1,17 @@
+Source: zari
+Section: utils
+Priority: optional
+Maintainer: Zari contributors <nihitdev@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13), cmake, g++, libncurses-dev, pkg-config
+Standards-Version: 4.7.0
+Homepage: https://get-zari.vercel.app
+Rules-Requires-Root: no
+
+Package: zari
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: xdg-utils
+Description: fast, keyboard-driven terminal file manager
+ Zari is a modern C++20 terminal file manager for Linux with three-pane
+ navigation, tabs, previews, safe file operations, configurable keybindings,
+ and themes.

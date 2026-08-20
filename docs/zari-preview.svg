@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc" xml:space="preserve">
+  <title id="title">Zari terminal file manager preview</title>
+  <desc id="desc">A realistic mock screenshot of Zari showing parent, current directory, and source preview panes.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17152a"/><stop offset="1" stop-color="#090b0a"/></linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#25282a"/><stop offset="1" stop-color="#1c1e20"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000" flood-opacity=".5"/></filter>
+    <style>
+      .mono{font-family:'DejaVu Sans Mono','Liberation Mono',monospace}.label{font-size:14px;letter-spacing:2px;fill:#6f756e}.row{font-size:18px;fill:#cdd3ca}.muted{fill:#747b73}.dir{fill:#8fb9ff}.green{fill:#b6e875}.purple{fill:#c7a5ff}.cyan{fill:#8ddbd3}.line{stroke:#3a3e3a;stroke-width:1}.code{font-size:16px}.ln{fill:#555b55}.kw{fill:#c7a5ff}.str{fill:#b6e875}.type{fill:#8fb9ff}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="url(#page)"/>
+  <circle cx="1080" cy="90" r="260" fill="#8060db" opacity=".1"/>
+  <circle cx="150" cy="660" r="240" fill="#c8ff4d" opacity=".045"/>
+  <g filter="url(#shadow)">
+    <rect x="55" y="55" width="1170" height="610" rx="12" fill="#111310" stroke="#4b514a"/>
+    <path d="M67 55h1146a12 12 0 0 1 12 12v42H55V67a12 12 0 0 1 12-12z" fill="url(#bar)"/>
+    <circle cx="82" cy="82" r="7" fill="#ff6b67"/><circle cx="106" cy="82" r="7" fill="#e9b949"/><circle cx="130" cy="82" r="7" fill="#82c55b"/>
+    <text x="640" y="88" text-anchor="middle" class="mono" font-size="15" fill="#969c94">zari — ~/Projects/zari</text>
+
+    <rect x="55" y="109" width="1170" height="44" fill="#151815"/>
+    <text x="75" y="137" class="mono" font-size="16" font-weight="700" fill="#c8ff4d">[1:zari]</text>
+    <text x="178" y="137" class="mono" font-size="16" fill="#777d76">2:docs</text>
+    <text x="1200" y="137" text-anchor="end" class="mono" font-size="15" fill="#8c938a">~/Projects/zari</text>
+    <line x1="55" y1="153" x2="1225" y2="153" class="line"/>
+
+    <line x1="300" y1="153" x2="300" y2="619" class="line"/>
+    <line x1="744" y1="153" x2="744" y2="619" class="line"/>
+    <text x="77" y="185" class="mono label">PARENT</text>
+    <text x="322" y="185" class="mono label">CURRENT · 12 ITEMS</text>
+    <text x="766" y="185" class="mono label">PREVIEW · MAIN.CPP</text>
+
+    <g class="mono row">
+      <text x="78" y="229" class="dir">▰ Projects</text><text x="78" y="267">▰ sandbox</text><text x="78" y="305">▰ dotfiles</text><text x="78" y="343">▰ archive</text><text x="78" y="381">▰ Downloads</text>
+    </g>
+
+    <rect x="310" y="203" width="424" height="38" rx="3" fill="#c8ff4d"/>
+    <g class="mono row">
+      <text x="323" y="229" fill="#0b0d0b" font-weight="700">›  ▰ src/</text>
+      <text x="323" y="267" class="dir">   ▰ include/</text>
+      <text x="323" y="305">   · README.md</text><text x="716" y="305" text-anchor="end" class="muted">4.2K</text>
+      <text x="323" y="343">   · CMakeLists.txt</text><text x="716" y="343" text-anchor="end" class="muted">1.4K</text>
+      <text x="323" y="381">   · LICENSE</text><text x="716" y="381" text-anchor="end" class="muted">1.1K</text>
+      <text x="323" y="419" class="green">   * install.sh</text><text x="716" y="419" text-anchor="end" class="muted">115B</text>
+      <text x="323" y="457">   · keymap.toml</text><text x="716" y="457" text-anchor="end" class="muted">842B</text>
+      <text x="323" y="495">   · theme.toml</text><text x="716" y="495" text-anchor="end" class="muted">1.8K</text>
+    </g>
+
+    <g class="mono code">
+      <text x="766" y="224"><tspan class="ln">1  </tspan><tspan class="kw">#include</tspan><tspan fill="#cdd3ca"> &lt;iostream&gt;</tspan></text>
+      <text x="766" y="254"><tspan class="ln">2  </tspan><tspan class="kw">#include</tspan><tspan class="str"> "zari/app.hpp"</tspan></text>
+      <text x="766" y="284"><tspan class="ln">3</tspan></text>
+      <text x="766" y="314"><tspan class="ln">4  </tspan><tspan class="type">int</tspan><tspan fill="#cdd3ca"> main(</tspan><tspan class="type">int</tspan><tspan fill="#cdd3ca"> argc, </tspan><tspan class="type">char</tspan><tspan fill="#cdd3ca">** argv) {</tspan></text>
+      <text x="766" y="344"><tspan class="ln">5    </tspan><tspan class="type">std::string</tspan><tspan fill="#cdd3ca"> error;</tspan></text>
+      <text x="766" y="374"><tspan class="ln">6    </tspan><tspan class="kw">auto</tspan><tspan fill="#cdd3ca"> cli = zari::parse_cli(</tspan></text>
+      <text x="766" y="404"><tspan class="ln">7      </tspan><tspan fill="#cdd3ca">argc, argv, error);</tspan></text>
+      <text x="766" y="434"><tspan class="ln">8    </tspan><tspan class="kw">if</tspan><tspan fill="#cdd3ca"> (!cli) </tspan><tspan class="kw">return</tspan><tspan fill="#cdd3ca"> 2;</tspan></text>
+      <text x="766" y="464"><tspan class="ln">9</tspan></text>
+      <text x="766" y="494"><tspan class="ln">10   </tspan><tspan class="kw">return</tspan><tspan fill="#cdd3ca"> zari::App(*cli).run();</tspan></text>
+      <text x="766" y="524"><tspan class="ln">11 </tspan><tspan fill="#cdd3ca">}</tspan></text>
+    </g>
+
+    <rect x="55" y="619" width="1170" height="46" fill="#191c18"/>
+    <rect x="55" y="619" width="126" height="46" fill="#8d6ee8"/>
+    <text x="118" y="648" text-anchor="middle" class="mono" font-size="15" font-weight="700" fill="#fff">NORMAL</text>
+    <text x="202" y="648" class="mono" font-size="15" fill="#9ba299">0 selected</text>
+    <text x="342" y="648" class="mono" font-size="15" fill="#9ba299">12 items</text>
+    <text x="1200" y="648" text-anchor="end" class="mono" font-size="15" fill="#cdd3ca">src/ · 4 dirs · 8 files</text>
+  </g>
+  <g transform="translate(88 28) rotate(-2)"><rect width="178" height="38" rx="4" fill="#c8ff4d"/><text x="89" y="25" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#090b09">FAST · NATIVE · SAFE</text></g>
+</svg>

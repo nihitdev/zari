@@ -4,7 +4,11 @@
 
 > Zari is inspired by modern terminal file managers but is an independent C++ implementation.
 
-![Screenshot placeholder](docs/screenshot-placeholder.svg)
+<div align="center">
+  <img src="docs/zari-preview.svg" alt="Zari three-pane terminal file manager preview" width="100%" />
+</div>
+
+<p align="center"><sub>Illustrated preview — exact colors and glyphs depend on your terminal and active theme.</sub></p>
 
 Zari focuses on predictable filesystem behavior, a clean three-pane interface, and useful defaults that can be overridden without copying a complete configuration. It has no plugin or scripting system.
 

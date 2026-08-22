@@ -1,16 +1,21 @@
 import Link from "next/link";
 
-const features = [
-  ["01", "Three panes, zero noise", "See where you came from, what is here, and what comes next—without leaving the keyboard."],
-  ["02", "Native by design", "Modern C++20 and ncursesw. Fast startup, deterministic cleanup, and no scripting runtime."],
-  ["03", "Safe file operations", "Collision-aware copy and move, explicit permanent deletion, and freedesktop-compatible trash."],
-  ["04", "Make it yours", "Layered TOML configuration, remappable key chords, six built-in themes, and live reload."],
-  ["05", "Tabs with memory", "Every tab keeps its own directory, cursor, history, and selection state."],
-  ["06", "Useful previews", "Read text, inspect folders and metadata, and identify binary files without executing arbitrary code."],
+const capabilities = [
+  ["Navigate", "Vim-style movement, directory history, tabs, bookmarks, and fzf-powered jumps."],
+  ["Operate", "Multi-select, copy, move, rename, trash, and collision-safe paste without shell interpolation."],
+  ["Preview", "Text and directory views plus optional JSON, PDF, archive, image, and media metadata."],
+  ["Customize", "Layered TOML config, remappable key chords, six themes, Nerd Font icons, and live reload."],
 ];
 
+const keys = [
+  ["j / k", "move"], ["h / l", "leave / enter"], ["Space", "select"],
+  ["z", "subtree"], ["S", "content search"], ["?", "all bindings"],
+];
+
+const integrations = ["fd", "rg", "fzf", "zoxide", "jq", "7-Zip", "Poppler", "FFmpeg", "ImageMagick"];
+
 function Terminal() {
-  return <div className="terminal-wrap" aria-label="Illustration of the Zari interface">
+  return <div className="terminal-wrap" aria-label="Illustration of Zari's three-pane interface">
     <div className="terminal-bar"><span/><span/><span/><b>zari — ~/Projects/zari</b></div>
     <div className="terminal-tabs"><strong>[1:zari]</strong><span>2:docs</span><span className="terminal-path">~/Projects/zari</span></div>
     <div className="panes">
@@ -23,18 +28,39 @@ function Terminal() {
 }
 
 export default function Home() {
-  return <main>
-    <section className="hero shell">
-      <div className="eyebrow"><span/> TERMINAL FILE MANAGER · LINUX</div>
-      <h1>Move at the<br/>speed of <em>thought.</em></h1>
-      <p className="lede">Zari is a fast, keyboard-driven file manager built in modern C++. Familiar enough to feel natural. Focused enough to stay out of your way.</p>
-      <div className="actions"><Link className="button primary" href="/docs/getting-started/">Get started <span>→</span></Link><a className="button secondary" href="https://github.com/nihitdev/zari">View source ↗</a></div>
-      <div className="install"><code><span>$</span> git clone https://github.com/nihitdev/zari.git</code><span aria-hidden="true">↵</span></div>
+  return <main className="landing">
+    <section className="landing-hero shell">
+      <a className="release-pill" href="https://github.com/nihitdev/zari/releases/latest"><span/> Zari 0.1 is available <b>View release →</b></a>
+      <div className="hero-mark" aria-hidden="true">Z</div>
+      <h1>Your filesystem.<br/><em>Under your fingers.</em></h1>
+      <p>A fast, keyboard-driven terminal file manager for Linux—written in C++20, built on ncursesw, and designed without a plugin runtime.</p>
+      <div className="landing-actions">
+        <Link className="button primary" href="/docs/getting-started/">Get started <span>→</span></Link>
+        <a className="button secondary" href="https://github.com/nihitdev/zari">GitHub <span>↗</span></a>
+      </div>
+      <div className="command-card"><span>$</span><code>curl -fsSL https://raw.githubusercontent.com/nihitdev/zari/main/install.sh | sh</code></div>
+      <p className="install-links"><Link href="/docs/installation/">All installation methods</Link><span>·</span><Link href="/docs/configuration/#generate-starter-files">Run zari init</Link></p>
     </section>
-    <section className="demo shell"><Terminal/><div className="float-card card-one"><b>VIM-STYLE</b><span><kbd>g</kbd><kbd>g</kbd> jump to top</span></div><div className="float-card card-two"><b>LIVE RELOAD</b><span><kbd>R</kbd> config applied</span></div></section>
-    <section className="manifesto shell"><p>FILESYSTEM, UNCOMPLICATED</p><blockquote>Tools should feel like<br/>an extension of your hands.</blockquote><div className="rule"/><p className="manifesto-copy">Zari keeps the feedback loop tight: direct controls, useful context, and no plugin runtime between you and your files.</p></section>
-    <section className="features shell" id="features"><div className="section-title"><p>BUILT FOR FLOW</p><h2>Everything you need.<br/><em>Nothing you don’t.</em></h2></div><div className="feature-grid">{features.map(([n,title,text])=><article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-    <section className="themes shell"><div><p className="kicker">YOUR TERMINAL, YOUR RULES</p><h2>Colors with<br/><em>character.</em></h2><p>Start with a carefully tuned preset, then override every surface with a small TOML file.</p><Link href="/docs/configuration/">Explore configuration →</Link></div><div className="swatches"><div className="swatch-title"><span>theme.toml</span><span>● ● ●</span></div>{[["Catppuccin Mocha","catppuccin"],["Gruvbox Dark","gruvbox"],["Dracula","dracula"],["Nord","nord"],["Tokyo Night","tokyo"]].map(([name,slug])=><div className="swatch" key={name}><b>{name}</b><span><i className={`tone ${slug}-one`}/><i className={`tone ${slug}-two`}/><i className={`tone ${slug}-three`}/></span></div>)}</div></section>
-    <section className="cta"><div className="shell"><span className="big-z">Z</span><div><p>READY WHEN YOU ARE</p><h2>Your files.<br/>Your flow.</h2><Link className="button light" href="/docs/getting-started/">Build Zari <span>→</span></Link></div></div></section>
+
+    <section className="landing-terminal shell"><div className="terminal-glow"/><Terminal/></section>
+
+    <section className="project-strip"><div className="shell"><span>LINUX</span><span>C++20</span><span>NCURSESW</span><span>GPL-3.0-OR-LATER</span><span>NO PLUGINS</span></div></section>
+
+    <section className="landing-section shell" id="features">
+      <div className="landing-heading"><p>BUILT FOR THE TERMINAL</p><h2>Direct controls.<br/>Useful context.</h2><p>Zari keeps filesystem work visible and predictable while staying close to native Linux tools.</p></div>
+      <div className="capability-grid">{capabilities.map(([title,description],index)=><article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+    </section>
+
+    <section className="keyboard-section">
+      <div className="shell"><div><p className="section-label">KEYBOARD FIRST</p><h2>Learn a handful.<br/>Remap everything.</h2><p>Defaults are Vim-like, multi-key chords are first-class, and the help overlay always reflects your active keymap.</p><Link href="/docs/keybindings/">Keybinding reference →</Link></div><div className="key-list">{keys.map(([key,action])=><div key={key}><kbd>{key}</kbd><span>{action}</span></div>)}</div></div>
+    </section>
+
+    <section className="landing-section tooling-section shell">
+      <div className="landing-heading"><p>OPTIONAL, NOT REQUIRED</p><h2>Native core.<br/>Better together.</h2><p>Zari runs without this toolchain, then detects familiar command-line utilities for richer navigation, search, and previews.</p></div>
+      <div className="tool-cloud">{integrations.map(tool=><span key={tool}>{tool}</span>)}</div>
+      <Link className="text-link" href="/docs/optional-tools/">Explore optional integrations →</Link>
+    </section>
+
+    <section className="open-source-section"><div className="shell"><div className="oss-mark">GPL</div><div><p className="section-label">INDEPENDENT AND OPEN SOURCE</p><h2>Built in the open.<br/>Owned by its users.</h2><p>Zari is an independent implementation licensed under GPL-3.0-or-later. Read the code, report issues, package it, or contribute a focused improvement.</p><div className="landing-actions"><a className="button primary" href="https://github.com/nihitdev/zari">Browse source <span>↗</span></a><Link className="button secondary" href="/docs/development/">Contribute <span>→</span></Link></div></div></div></section>
   </main>;
 }

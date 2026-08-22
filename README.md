@@ -46,9 +46,12 @@ Other supported methods:
 Launch the current directory or pass a path:
 
 ```sh
+zari init
 zari
 zari ~/Projects
 ```
+
+`zari init` creates `zari.toml`, `keymap.toml`, and `theme.toml` in the active Zari config directory without overwriting existing files. Inside Zari, press `h` for the parent directory or `b` for directory-history back.
 
 ## Documentation
 
@@ -59,6 +62,7 @@ zari ~/Projects
 | [Configuration](https://get-zari.vercel.app/docs/configuration/) | XDG paths, manager settings, preview settings, and safe reload |
 | [Keybindings](https://get-zari.vercel.app/docs/keybindings/) | Default controls, remapping, multi-key chords, and bookmarks |
 | [Themes](https://get-zari.vercel.app/docs/themes/) | Built-in presets and custom style overrides |
+| [Optional tools](https://get-zari.vercel.app/docs/optional-tools/) | Nerd Fonts, accelerated search, richer previews, and integration status |
 | [File operations](https://get-zari.vercel.app/docs/file-operations/) | Selection, clipboard, collisions, trash, and permanent deletion |
 | [Architecture](https://get-zari.vercel.app/docs/architecture/) | C++ modules, ownership boundaries, and repository layout |
 | [Development](https://get-zari.vercel.app/docs/development/) | Tests, contribution checklist, design constraints, and roadmap |

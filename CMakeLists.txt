@@ -10,7 +10,7 @@ find_library(NCURSESW_LIBRARY ncursesw REQUIRED)
 include(GNUInstallDirs)
 
 add_library(zari_core
-  src/config.cpp src/filesystem.cpp src/keymap.cpp src/search.cpp
+  src/config.cpp src/external.cpp src/filesystem.cpp src/keymap.cpp src/search.cpp
   src/tab.cpp src/task.cpp src/theme.cpp src/preview.cpp src/manager.cpp)
 target_include_directories(zari_core PUBLIC include)
 target_compile_options(zari_core PRIVATE -Wall -Wextra -Wpedantic)
